@@ -34,7 +34,7 @@ export default function CreateNote() {
     console.log(state.note);
     const note = state.note;
     var db = firebase.firestore();
-    if (state.note != "") {
+    if (state.note !== "") {
       db.collection("notes")
         .add({
           note: note,
@@ -56,7 +56,7 @@ export default function CreateNote() {
 
   return (
     <>
-      <div className="container mt-4">
+      <div className="container" style={{marginTop:"100px"}}>
         <form action="#">
           <TextField
             id="note"
