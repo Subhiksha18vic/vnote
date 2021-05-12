@@ -1,12 +1,10 @@
-import { React, useState } from "react";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
+import { React } from "react";
 import styled from "styled-components";
-import { AnimateSharedLayout, motion, AnimatePresence } from "framer-motion";
+import {  motion } from "framer-motion";
 
 export default function Notes(props) {
   const { notes } = props;
-   const [selectedId, setSelectedId] = useState(null)
+  // const [selectedId, setSelectedId] = useState(null)
   const Wrapper = styled(motion.div)`
   position: relative;
   width: auto;

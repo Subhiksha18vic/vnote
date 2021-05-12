@@ -28,6 +28,7 @@ export default function GetNotes() {
         });
         setState({isLoaded:true,notes:notes});
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setState]);
 
   return <div className="container mt-5">
