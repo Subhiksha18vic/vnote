@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export default function Notes(props) {
   const { notes } = props;
-
-  const [theNotes, setTheNotes] = useState(notes);
 
   const Wrapper = styled(motion.div)`
     position: relative;
@@ -57,11 +54,7 @@ export default function Notes(props) {
     },
   };
 
-  useEffect(() => {
-    setTheNotes(notes);
-  }, [notes]);
-
-  if (!theNotes || theNotes.length === 0) {
+  if (!notes || notes.length === 0) {
     return <p className="mt-5">You haven't created any notes yet.</p>;
   } else {
     return (
@@ -69,7 +62,7 @@ export default function Notes(props) {
         <h4 className="container">Notes</h4>
         <div className="container my-4">
           <div className="row">
-            {theNotes.map((note) => {
+            {notes.map((note) => {
               return (
                 <Wrapper
                   className="col-4 my-2"
