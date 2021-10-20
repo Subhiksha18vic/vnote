@@ -1,40 +1,42 @@
-import { React } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Notes(props) {
   const { notes } = props;
-  // const [selectedId, setSelectedId] = useState(null)
-  const Wrapper = styled(motion.div)`
-  position: relative;
-  width: auto;
-  height: auto;
-`;
 
-const Glow = styled(motion.div)`
-  background: linear-gradient(90deg, #ffa0ae 0%, #aacaef 75%);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-filter: blur(15px);
-  filter: blur(15px);
-  border-radius: 16px;
-`;
-  
-const Card = styled(motion.div)`
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  background: rgba(255, 255, 255, 0.65);
-  height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  div {
-    color: #4a4a4c;
-    height: 50px;
-  }
-`;
+  const [theNotes, setTheNotes] = useState(notes);
+
+  const Wrapper = styled(motion.div)`
+    position: relative;
+    width: auto;
+    height: auto;
+  `;
+
+  const Glow = styled(motion.div)`
+    background: linear-gradient(90deg, #ffa0ae 0%, #aacaef 75%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+    border-radius: 16px;
+  `;
+
+  const Card = styled(motion.div)`
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.65);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    div {
+      color: #4a4a4c;
+      height: 50px;
+    }
+  `;
 
   const cardVariants = {
     hover: {
@@ -54,7 +56,11 @@ const Card = styled(motion.div)`
       opacity: 0,
     },
   };
-  
+
+  useEffect(() => {
+    setTheNotes(notes);
+  }, [notes]);
+
   if (!notes || notes.length === 0) {
     return <p className="mt-5">You haven't created any notes yet.</p>;
   } else {
@@ -63,9 +69,13 @@ const Card = styled(motion.div)`
         <h4 className="container">Notes</h4>
         <div className="container my-4">
           <div className="row">
-            {notes.map((note) => {
+            {theNotes.map((note) => {
               return (
-                <Wrapper className="col-4 my-2" initial="initial" whileHover="hover">
+                <Wrapper
+                  className="col-4 my-2"
+                  initial="initial"
+                  whileHover="hover"
+                >
                   <Glow
                     variants={glowVariants}
                     transition={{
@@ -73,14 +83,15 @@ const Card = styled(motion.div)`
                       delay: 0.15,
                     }}
                   />
-                  <Card key={note.id} 
-                  className="card p-3"
+                  <Card
+                    key={note.id}
+                    className="card p-3"
                     variants={cardVariants}
                     transition={{
                       ease: "easeOut",
                       delay: 0.15,
                       duration: 0.5,
-                    }} 
+                    }}
                   >
                     <h6 className="">{note.note}</h6>
                   </Card>
