@@ -62,9 +62,9 @@ export default function Notes(props) {
         <h4 className="">Notes</h4>
         <div className="container my-4">
           <div className="row">
-            {notes.map((note) => {
+            {notes.map((note, id) => {
               return (
-                <div className="col-12 col-md-4">
+                <div key={id} className="col-12 col-md-4">
                   <Wrapper
                     className="my-2"
                     initial="initial"
