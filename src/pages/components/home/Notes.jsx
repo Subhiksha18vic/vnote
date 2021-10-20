@@ -59,36 +59,38 @@ export default function Notes(props) {
   } else {
     return (
       <div className="pt-5">
-        <h4 className="container">Notes</h4>
+        <h4 className="">Notes</h4>
         <div className="container my-4">
           <div className="row">
             {notes.map((note) => {
               return (
-                <Wrapper
-                  className="col-4 my-2"
-                  initial="initial"
-                  whileHover="hover"
-                >
-                  <Glow
-                    variants={glowVariants}
-                    transition={{
-                      ease: "easeOut",
-                      delay: 0.15,
-                    }}
-                  />
-                  <Card
-                    key={note.id}
-                    className="card p-3"
-                    variants={cardVariants}
-                    transition={{
-                      ease: "easeOut",
-                      delay: 0.15,
-                      duration: 0.5,
-                    }}
+                <div className="col-12 col-md-4">
+                  <Wrapper
+                    className="my-2"
+                    initial="initial"
+                    whileHover="hover"
                   >
-                    <h6 className="">{note.note}</h6>
-                  </Card>
-                </Wrapper>
+                    <Glow
+                      variants={glowVariants}
+                      transition={{
+                        ease: "easeOut",
+                        delay: 0.15,
+                      }}
+                    />
+                    <Card
+                      key={note.id}
+                      className="card p-3"
+                      variants={cardVariants}
+                      transition={{
+                        ease: "easeOut",
+                        delay: 0.15,
+                        duration: 0.5,
+                      }}
+                    >
+                      <h6 className="">{note.note}</h6>
+                    </Card>
+                  </Wrapper>
+                </div>
               );
             })}
           </div>
