@@ -61,7 +61,7 @@ export default function Notes(props) {
     setTheNotes(notes);
   }, [notes]);
 
-  if (!notes || notes.length === 0) {
+  if (!theNotes || theNotes.length === 0) {
     return <p className="mt-5">You haven't created any notes yet.</p>;
   } else {
     return (
